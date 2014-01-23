@@ -1,0 +1,4 @@
+decathlon_dev_ops:
+    resource: "@DecathlonDevOpsBundle/Resources/config/routing.yml"
+    prefix:   /
+

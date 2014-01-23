@@ -1,0 +1,3 @@
+decathlon_dev_ops_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: DecathlonDevOpsBundle:Default:index }
