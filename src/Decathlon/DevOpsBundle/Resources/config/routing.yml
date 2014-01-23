@@ -1,3 +1,7 @@
 decathlon_dev_ops_homepage:
     pattern:  /hello/{name}
     defaults: { _controller: DecathlonDevOpsBundle:Default:index }
+
+quienes_somos:
+    path:  /quienes-somos/
+    defaults: { _controller: DecathlonDevOpsBundle:Default:quienesSomos }
