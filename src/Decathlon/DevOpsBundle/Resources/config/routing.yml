@@ -5,3 +5,7 @@ decathlon_dev_ops_homepage:
 quienes_somos:
     path:  /quienes-somos/
     defaults: { _controller: DecathlonDevOpsBundle:Default:quienesSomos }
+
+contacto:
+    path:  /contacto/
+    defaults: { _controller: DecathlonDevOpsBundle:Default:contacto }

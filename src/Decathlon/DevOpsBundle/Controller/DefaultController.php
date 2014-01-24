@@ -16,4 +16,9 @@ class DefaultController extends Controller
     {
         return $this->render('DecathlonDevOpsBundle::quienessomos.html.twig');
     }
+
+    public function contactoAction()
+    {
+        return $this->render('DecathlonDevOpsBundle::contacto.html.twig');
+    }
 }
