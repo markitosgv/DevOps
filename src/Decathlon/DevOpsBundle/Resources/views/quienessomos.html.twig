@@ -1,0 +1,10 @@
+{% extends 'DecathlonDevOpsBundle::layout.html.twig' %}
+{% block header %}{{ parent() }} :: Quiénes Somos{% endblock %}
+{% block content %}
+    Los DevOps a día {{ 'now'|date("d/m/y") }} somos:
+    <ul>
+    {% for letter in 'a'..'f' %}
+        <li>{{ letter }}</li>
+    {% endfor %}
+    </ul>
+{% endblock %}

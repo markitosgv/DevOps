@@ -14,6 +14,6 @@ class DefaultController extends Controller
 
     public function quienesSomosAction()
     {
-        return new Response ("Somos los auténticos DevOpers");
+        return $this->render('DecathlonDevOpsBundle::quienessomos.html.twig');
     }
 }
