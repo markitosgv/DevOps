@@ -9,3 +9,15 @@ quienes_somos:
 contacto:
     path:  /contacto/
     defaults: { _controller: DecathlonDevOpsBundle:Default:contacto }
+
+noticia_insert:
+    path:  /noticias/insertar/{titular}
+    defaults: { _controller: DecathlonDevOpsBundle:Noticias:insertarNoticia }
+
+noticia_edit:
+    path:  /noticias/editar/{id}/{titular}
+    defaults: { _controller: DecathlonDevOpsBundle:Noticias:editarNoticia }
+
+noticia_remove:
+    path:  /noticias/eliminar/{id}
+    defaults: { _controller: DecathlonDevOpsBundle:Noticias:eliminarNoticia }
