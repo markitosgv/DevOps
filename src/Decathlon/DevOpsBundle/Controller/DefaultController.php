@@ -7,9 +7,18 @@ use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends Controller
 {
-    public function indexAction($name)
+    public function indexAction()
     {
-        return $this->render('DecathlonDevOpsBundle:Default:index.html.twig', array('name' => $name));
+        $em = $this->getDoctrine()->getManager();
+        $members = $em->getRepository('DecathlonDevOpsBundle:Miembro')->getLastMiembros(2);
+        $proyectos = $em->getRepository('DecathlonDevOpsBundle:Proyecto')->getLastProyectos(2);
+        $new = $em->getRepository('DecathlonDevOpsBundle:Noticias')->getLast();
+
+        return $this->render('DecathlonDevOpsBundle::inicio.html.twig', array(
+            'miembros' => $members,
+            'proyectos' => $proyectos,
+            'noticia' => $new,
+        ));
     }
 
     public function quienesSomosAction()

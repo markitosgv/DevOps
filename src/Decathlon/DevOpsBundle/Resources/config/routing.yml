@@ -1,5 +1,5 @@
 decathlon_dev_ops_homepage:
-    pattern:  /hello/{name}
+    pattern:  /home
     defaults: { _controller: DecathlonDevOpsBundle:Default:index }
 
 quienes_somos:
@@ -21,3 +21,27 @@ noticia_edit:
 noticia_remove:
     path:  /noticias/eliminar/{id}
     defaults: { _controller: DecathlonDevOpsBundle:Noticias:eliminarNoticia }
+
+proyecto_listado:
+    path:  /proyecto/listado
+    defaults: { _controller: DecathlonDevOpsBundle:Proyectos:listado }
+
+proyecto_insert:
+    path:  /proyecto/insertar/{nombre}
+    defaults: { _controller: DecathlonDevOpsBundle:Proyectos:insertarProyecto }
+
+proyecto_get:
+    path:  /proyecto/ver/{id}
+    defaults: { _controller: DecathlonDevOpsBundle:Proyectos:getProyecto }
+
+miembro_listado:
+    path:  /miembro/listado
+    defaults: { _controller: DecathlonDevOpsBundle:Miembros:listado }
+
+miembro_insert:
+    path:  /miembro/insertar/{nombre}/{apellido}
+    defaults: { _controller: DecathlonDevOpsBundle:Miembros:insertarMiembro }
+
+miembro_get:
+    path:  /miembro/ver/{id}
+    defaults: { _controller: DecathlonDevOpsBundle:Miembros:getMiembro }

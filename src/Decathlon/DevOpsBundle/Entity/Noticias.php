@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="Decathlon\DevOpsBundle\Entity\NoticiasRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Noticias
 {
@@ -150,4 +151,13 @@ class Noticias
     {
         return $this->categoria;
     }
+
+   /**
+    * @ORM\PreUpdate
+    * @ORM\PrePersist
+    */
+   public function setUpdatedTime()
+   {
+       $this->fecha = new \DateTime();
+   }
 }

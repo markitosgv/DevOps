@@ -1,0 +1,16 @@
+{% extends 'DecathlonDevOpsBundle::layout.html.twig' %}
+{% block header %}{{ parent() }} :: Proyecto {{ proyecto.nombre }}{% endblock %}
+{% block content %}
+    <h1>{{ proyecto.nombre }}</h1>
+    <div class="row">
+        <div class="col-md-10">
+            {{ proyecto.descripcion }}
+        </div>
+    </div>
+    <h2>Miembros:</h2>
+    <ul>
+    {% for miembro in proyecto.miembros %}
+        <li><a href="{{ path('miembro_get', {'id': miembro.id}) }}">{{ miembro.nombre }} {{ miembro.apellido }}</a></li>
+    {% endfor %}
+    </ul>
+{% endblock %}

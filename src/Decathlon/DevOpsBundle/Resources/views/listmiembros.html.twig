@@ -1,0 +1,9 @@
+{% extends 'DecathlonDevOpsBundle::layout.html.twig' %}
+{% block header %}{{ parent() }} :: Listado de Miembros{% endblock %}
+{% block content %}
+    <ul>
+    {% for miembro in miembros %}
+        <li><a href="{{ path('miembro_get', {'id': miembro.id}) }}">{{ miembro.nombre }}</a></li>
+    {% endfor %}
+    </ul>
+{% endblock %}

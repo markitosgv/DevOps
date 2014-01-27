@@ -1,0 +1,18 @@
+{% extends 'DecathlonDevOpsBundle::layout.html.twig' %}
+{% block header %}{{ parent() }} :: Inicio{% endblock %}
+{% block content %}
+    <h2>Última noticia</h2>
+    {{ noticia.titular }}
+    <h2>Últimos miembros DevOps</h2>
+    <ul>
+    {% for miembro in miembros %}
+    <li><a href="{{ path('miembro_get',{'id' : miembro.id}) }}">{{ miembro.nombre }} {{ miembro.apellido }}</a></li>
+    {% endfor %}
+    </ul>
+    <h2>Últimos proyectos</h2>
+    <ul>
+        {% for proyecto in proyectos %}
+            <li><a href="{{ path('proyecto_get',{'id' : proyecto.id}) }}">{{ proyecto.nombre }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}

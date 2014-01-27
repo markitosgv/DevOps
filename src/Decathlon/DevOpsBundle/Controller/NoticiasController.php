@@ -17,7 +17,6 @@ class NoticiasController extends Controller
 
         $new = new Noticias();
         $new->setTitular($titular);
-        $new->setFecha(new \DateTime());
         $new->setCategoria($category);
         $new->setCuerpo("test");
 
@@ -37,7 +36,6 @@ class NoticiasController extends Controller
         $em = $this->getDoctrine()->getManager();
         $new = $em->getRepository('DecathlonDevOpsBundle:Noticias')->findOneBy(array('id' => $id));
         $new->setTitular($titular);
-        $new->setFecha(new \DateTime());
         $em->flush($new);
 
         return new Response(
