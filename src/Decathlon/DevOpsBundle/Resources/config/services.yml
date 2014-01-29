@@ -1,7 +1,8 @@
 parameters:
-#    decathlon_dev_ops.example.class: Decathlon\DevOpsBundle\Example
+      decathlon_dev_ops.wheater.class: Decathlon\DevOpsBundle\Model\WheaterService
+      decathlon_dev_ops.cityURL: http://www.aemet.es/xml/municipios/localidad_28134.xml
 
 services:
-#    decathlon_dev_ops.example:
-#        class: %decathlon_dev_ops.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
+      decathlon_dev_ops.wheater:
+          class: %decathlon_dev_ops.wheater.class%
+          arguments: ['%decathlon_dev_ops.cityURL%']

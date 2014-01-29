@@ -2,9 +2,7 @@
 
 namespace Decathlon\DevOpsBundle\Controller;
 
-use Decathlon\DevOpsBundle\Entity\Categorias;
 use Decathlon\DevOpsBundle\Entity\Noticias;
-use Decathlon\DevOpsBundle\Form\Model\NoticiasFormClass;
 use Decathlon\DevOpsBundle\Form\Type\NoticiasEditFormType;
 use Decathlon\DevOpsBundle\Form\Type\NoticiasFormType;
 use Decathlon\DevOpsBundle\Form\Type\NoticiasInsertFormType;
@@ -17,24 +15,9 @@ class NoticiasController extends Controller
 
     public function insertarNoticiaAction(Request $request, $titular=null)
     {
-//        $category = new Categorias();
-//        $category->setNombre("Actualidad");
-//
-//        $new = new Noticias();
-//        $new->setTitular($titular);
-//        $new->setCategoria($category);
-//        $new->setCuerpo("test");
-//
-//        $em = $this->getDoctrine()->getManager();
-//        $em->persist($category);
-//        $em->persist($new);
-//        $em->flush();
-//
-//        return new Response(
-//            'Created product id: '.$new->getId().' and category id: '.$category->getId()
-//        );
-
         $new = new Noticias();
+        $temperature = $this->get('decathlon_dev_ops.wheater')->getTemperature();
+        $new->setCuerpo("Temperatura: ".$temperature." ºC");
         $form = $this->createForm(new NoticiasInsertFormType(), $new, array('attr' => array('titular' => $titular)));
 
         if ($request->isMethod('POST')) {
