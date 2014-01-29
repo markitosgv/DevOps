@@ -15,7 +15,7 @@ noticia_insert:
     defaults: { _controller: DecathlonDevOpsBundle:Noticias:insertarNoticia }
 
 noticia_edit:
-    path:  /noticias/editar/{id}/{titular}
+    path:  /noticias/editar/{id}
     defaults: { _controller: DecathlonDevOpsBundle:Noticias:editarNoticia }
 
 noticia_remove:
@@ -29,6 +29,10 @@ proyecto_listado:
 proyecto_insert:
     path:  /proyecto/insertar/{nombre}
     defaults: { _controller: DecathlonDevOpsBundle:Proyectos:insertarProyecto }
+
+proyecto_edit:
+    path:  /proyecto/editar/{id}
+    defaults: { _controller: DecathlonDevOpsBundle:Proyectos:editarProyecto }
 
 proyecto_get:
     path:  /proyecto/ver/{id}

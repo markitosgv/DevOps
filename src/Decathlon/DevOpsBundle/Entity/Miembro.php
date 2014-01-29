@@ -3,7 +3,8 @@
 namespace Decathlon\DevOpsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\Validator\Constraints as Assert;
+use Decathlon\DevOpsBundle\Validator\Constraints as DecathlonAssert;
 /**
  * Miembro
  *
@@ -44,7 +45,44 @@ class Miembro
     private $bio;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Proyecto", inversedBy="miembros")
+     * @var string
+     * @Assert\Email(
+     *     message = "The email '{{ value }}' is not a valid email.",
+     *     checkMX = true
+     * )
+     * @ORM\Column(name="email", type="text")
+     */
+    private $email;
+
+    /**
+     * @var string
+     *
+
+     * @DecathlonAssert\Nif
+     * @ORM\Column(name="NIF", type="string", length=9, nullable=false)
+     */
+    private $nif;
+
+    /**
+     * @param string $nif
+     */
+    public function setNif($nif)
+    {
+        $this->nif = $nif;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNif()
+    {
+        return $this->nif;
+    }
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Proyecto", inversedBy="miembros", cascade={"persist"})
      * @ORM\JoinTable(name="miebros_proyectos")
      **/
     private $proyectos;
@@ -130,6 +168,29 @@ class Miembro
     public function getBio()
     {
         return $this->bio;
+    }
+
+    /**
+     * Set email
+     *
+     * @param string $email
+     * @return string
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * Get email
+     *
+     * @return string 
+     */
+    public function getEmail()
+    {
+        return $this->email;
     }
 
     /**

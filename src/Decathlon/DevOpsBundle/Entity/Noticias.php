@@ -3,6 +3,7 @@
 namespace Decathlon\DevOpsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Noticias
@@ -31,7 +32,8 @@ class Noticias
 
     /**
      * @var string
-     *
+     * @Assert\Length(min=7, groups={"insert"})
+     * @Assert\Length(min=3, groups={"edit"})
      * @ORM\Column(name="titular", type="string", length=128)
      */
     private $titular;

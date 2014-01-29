@@ -4,43 +4,76 @@ namespace Decathlon\DevOpsBundle\Controller;
 
 use Decathlon\DevOpsBundle\Entity\Categorias;
 use Decathlon\DevOpsBundle\Entity\Noticias;
+use Decathlon\DevOpsBundle\Form\Model\NoticiasFormClass;
+use Decathlon\DevOpsBundle\Form\Type\NoticiasEditFormType;
+use Decathlon\DevOpsBundle\Form\Type\NoticiasFormType;
+use Decathlon\DevOpsBundle\Form\Type\NoticiasInsertFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class NoticiasController extends Controller
 {
 
-    public function insertarNoticiaAction($titular)
+    public function insertarNoticiaAction(Request $request, $titular=null)
     {
-        $category = new Categorias();
-        $category->setNombre("Actualidad");
+//        $category = new Categorias();
+//        $category->setNombre("Actualidad");
+//
+//        $new = new Noticias();
+//        $new->setTitular($titular);
+//        $new->setCategoria($category);
+//        $new->setCuerpo("test");
+//
+//        $em = $this->getDoctrine()->getManager();
+//        $em->persist($category);
+//        $em->persist($new);
+//        $em->flush();
+//
+//        return new Response(
+//            'Created product id: '.$new->getId().' and category id: '.$category->getId()
+//        );
 
         $new = new Noticias();
-        $new->setTitular($titular);
-        $new->setCategoria($category);
-        $new->setCuerpo("test");
+        $form = $this->createForm(new NoticiasInsertFormType(), $new, array('attr' => array('titular' => $titular)));
 
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($category);
-        $em->persist($new);
-        $em->flush();
+        if ($request->isMethod('POST')) {
 
-        return new Response(
-            'Created product id: '.$new->getId().' and category id: '.$category->getId()
-        );
+            $form->handleRequest($request);
+            if ($form->isValid()) {
+                ldd($form->getData());
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($new);
+                $em->flush();
+            }
+        }
+
+        return $this->render('DecathlonDevOpsBundle::insertarnoticia.html.twig', array(
+            'form' => $form->createView(),
+        ));
     }
 
-    public function editarNoticiaAction($id, $titular)
+    public function editarNoticiaAction(Request $request, $id)
     {
 
         $em = $this->getDoctrine()->getManager();
         $new = $em->getRepository('DecathlonDevOpsBundle:Noticias')->findOneBy(array('id' => $id));
-        $new->setTitular($titular);
-        $em->flush($new);
 
-        return new Response(
-            'Edited new id: '.$new->getId().' with this new title: '.$new->getTitular()
-        );
+        $form = $this->createForm(new NoticiasEditFormType(), $new);
+
+        if ($request->isMethod('POST')) {
+
+            $form->handleRequest($request);
+            if ($form->isValid()) {
+                ldd($form->getData());
+                $em = $this->getDoctrine()->getManager();
+                $em->flush($new);
+            }
+        }
+
+        return $this->render('DecathlonDevOpsBundle::editarnoticia.html.twig', array(
+            'form' => $form->createView(),
+        ));
     }
 
     public function eliminarNoticiaAction($id)
