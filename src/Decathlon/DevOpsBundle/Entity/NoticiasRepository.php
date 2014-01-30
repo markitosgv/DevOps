@@ -16,7 +16,7 @@ class NoticiasRepository extends EntityRepository
     {
         return $this->getEntityManager()
             ->createQuery(
-                'SELECT n.titular, c.nombre FROM DecathlonDevOpsBundle:Noticias n INNER JOIN n.categoria c ORDER BY n.id DESC'
+                'SELECT n.titular, n.cuerpo, c.nombre FROM DecathlonDevOpsBundle:Noticias n INNER JOIN n.categoria c ORDER BY n.id DESC'
             )
 	    ->setMaxResults(1)
             ->getSingleResult();

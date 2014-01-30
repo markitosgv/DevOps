@@ -2,7 +2,10 @@
 {% block header %}{{ parent() }} :: Inicio{% endblock %}
 {% block content %}
     <h2>Última noticia</h2>
-    {{ noticia.titular }} {{ noticia.nombre }}
+    {{ noticia.titular }} [{{ noticia.nombre }}]
+    <p>
+        {{ noticia.cuerpo }}
+    </p>
     <h2>Últimos miembros DevOps</h2>
     <ul>
     {% for miembro in miembros %}

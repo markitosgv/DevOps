@@ -3,7 +3,7 @@
 {% block content %}
     <ul>
     {% for proyecto in proyectos %}
-        <li><a href="{{ path('proyecto_get', {'id': proyecto.id}) }}">{{ proyecto.nombre }}</a></li>
+        <li><a href="{{ path('proyecto_get', {'id': proyecto.id}) }}">{{ proyecto.nombre }}</a> {% if is_granted('ROLE_ADMIN')  %}<small><a href="{{ path('proyecto_edit',{'id': proyecto.id}) }}">[editar]</a></small>{% endif %}</li>
     {% endfor %}
     </ul>
 {% endblock %}

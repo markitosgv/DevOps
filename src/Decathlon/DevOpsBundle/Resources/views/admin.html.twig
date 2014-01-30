@@ -1,0 +1,7 @@
+{% extends 'DecathlonDevOpsBundle::layout.html.twig' %}
+{% block header %}{{ parent() }} :: Admin Menú{% endblock %}
+{% block content %}
+    <ul>
+        <li><a href="{{ path('noticia_insert') }}">Insertar Noticia</a></li>
+    </ul>
+{% endblock %}

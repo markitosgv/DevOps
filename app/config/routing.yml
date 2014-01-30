@@ -2,3 +2,12 @@ decathlon_dev_ops:
     resource: "@DecathlonDevOpsBundle/Resources/config/routing.yml"
     prefix:   /
 
+login:
+    path:   /login
+    defaults:  { _controller: DecathlonDevOpsBundle:Default:login }
+
+logout:
+    path: /admin/logout
+
+login_check:
+    path:   /admin/login_check

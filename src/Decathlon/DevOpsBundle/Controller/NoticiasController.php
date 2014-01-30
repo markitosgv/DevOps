@@ -24,7 +24,7 @@ class NoticiasController extends Controller
 
             $form->handleRequest($request);
             if ($form->isValid()) {
-                ldd($form->getData());
+
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($new);
                 $em->flush();

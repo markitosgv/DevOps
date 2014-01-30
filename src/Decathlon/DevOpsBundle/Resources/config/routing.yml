@@ -1,6 +1,14 @@
+homepage:
+    pattern:  /
+    defaults: { _controller: DecathlonDevOpsBundle:Default:index }
+
 decathlon_dev_ops_homepage:
     pattern:  /home
     defaults: { _controller: DecathlonDevOpsBundle:Default:index }
+
+admin:
+    path:  /admin/
+    defaults: { _controller: DecathlonDevOpsBundle:Default:admin }
 
 quienes_somos:
     path:  /quienes-somos/
@@ -11,15 +19,15 @@ contacto:
     defaults: { _controller: DecathlonDevOpsBundle:Default:contacto }
 
 noticia_insert:
-    path:  /noticias/insertar/{titular}
+    path:  /admin/noticias/insertar
     defaults: { _controller: DecathlonDevOpsBundle:Noticias:insertarNoticia }
 
 noticia_edit:
-    path:  /noticias/editar/{id}
+    path:  /admin/noticias/editar/{id}
     defaults: { _controller: DecathlonDevOpsBundle:Noticias:editarNoticia }
 
 noticia_remove:
-    path:  /noticias/eliminar/{id}
+    path:  /admin/noticias/eliminar/{id}
     defaults: { _controller: DecathlonDevOpsBundle:Noticias:eliminarNoticia }
 
 proyecto_listado:
@@ -27,11 +35,11 @@ proyecto_listado:
     defaults: { _controller: DecathlonDevOpsBundle:Proyectos:listado }
 
 proyecto_insert:
-    path:  /proyecto/insertar/{nombre}
+    path:  /admin/proyecto/insertar
     defaults: { _controller: DecathlonDevOpsBundle:Proyectos:insertarProyecto }
 
 proyecto_edit:
-    path:  /proyecto/editar/{id}
+    path:  /admin/proyecto/editar/{id}
     defaults: { _controller: DecathlonDevOpsBundle:Proyectos:editarProyecto }
 
 proyecto_get:
@@ -43,7 +51,7 @@ miembro_listado:
     defaults: { _controller: DecathlonDevOpsBundle:Miembros:listado }
 
 miembro_insert:
-    path:  /miembro/insertar/{nombre}/{apellido}
+    path:  /admin/miembro/insertar/{nombre}/{apellido}
     defaults: { _controller: DecathlonDevOpsBundle:Miembros:insertarMiembro }
 
 miembro_get:
